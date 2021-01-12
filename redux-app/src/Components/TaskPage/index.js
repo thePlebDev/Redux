@@ -8,23 +8,27 @@ const TASK_STATUSES =['Unstarted', 'In Progress', 'Completed'];
 const Container = styled.div`
 
 `
-const TaskLists = styled.div`
-
+const TaskListsContainer = styled.div`
+  border:1px solid red;
+  justify-content:center;
+  display:flex;
+  text-align:center;
 `
 
-
-
 const TasksPage = ({tasks})=>{
-
+  //console.log(tasks)
+ //1) status = unstarted
   const renderTaskLists=()=>{
     return TASK_STATUSES.map(status =>{
-      const statusTasks = tasks.filter(task =>task.status === status);
+
+      const statusTasks = tasks.filter(task =>{return task.status === status});
+
       return <TaskList key={status} status={status} tasks={statusTasks} />
     })
   }
   return(
     <Container>
-      <TaskLists>{renderTaskLists()}</TaskLists>
+      <TaskListsContainer>{renderTaskLists()}</TaskListsContainer>
     </Container>
   )
 
