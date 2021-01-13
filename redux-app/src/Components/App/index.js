@@ -1,13 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 
 import TasksPage from '../TaskPage'
+import NewTaskForm from '../NewTaskForm'
 
 
 const MockTasks = [
   {
     id:1,
-    title:'learn Redux',
+    title:'learn Redux and stuff',
     description:'the store,actions and reducers, oh my!',
     status:'In Progress'
   },
@@ -21,13 +23,20 @@ const MockTasks = [
 ]
 
 
-const App =()=>{
+const App =({tasks})=>{
 
   return(
     <div>
-      <TasksPage tasks={MockTasks}/>
+      <TasksPage tasks={tasks}/>
+      <NewTaskForm/>
+
     </div>
   )
 }
+function mapStateToProps(state){
+  return{
+    tasks:state.tasks
+  }
+}
 
-export default App
+export default connect(mapStateToProps)(App)

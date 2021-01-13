@@ -16,8 +16,7 @@ const TaskListsContainer = styled.div`
 `
 
 const TasksPage = ({tasks})=>{
-  //console.log(tasks)
- //1) status = unstarted
+
   const renderTaskLists=()=>{
     return TASK_STATUSES.map(status =>{
 
