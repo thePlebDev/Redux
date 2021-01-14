@@ -23,20 +23,34 @@ const MockTasks = [
 ]
 
 
-const App =({tasks})=>{
+const App =({tasks,onCreateTask})=>{
+  
 
   return(
     <div>
       <TasksPage tasks={tasks}/>
-      <NewTaskForm/>
+      <NewTaskForm taskCreation={onCreateTask}/>
 
     </div>
   )
 }
+const onCreateTask =(dispatch,title,description) =>{
+  dispatch({
+    type:'CREATE_TASK',
+    payload:{
+      title,
+      description
+    }
+  })
+}
+const mapDispatchToProps={
+  onCreateTask
+}
+
 function mapStateToProps(state){
   return{
     tasks:state.tasks
   }
 }
 
-export default connect(mapStateToProps)(App)
+export default connect(mapStateToProps,mapDispatchToProps)(App)

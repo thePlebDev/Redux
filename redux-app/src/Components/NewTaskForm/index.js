@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 
 import useForm from '../../Hooks/useForm';
 import TextInput from '../TextInput'
@@ -41,7 +42,9 @@ const Button = styled.button`
 
 
 
-const NewTaskForm =()=>{
+const NewTaskForm =({taskCreation})=>{
+  console.log('create task is below')
+  console.log(taskCreation)
 
   const {state,handleChange,handleSubmit} = useForm()
 
